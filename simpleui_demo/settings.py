@@ -105,6 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'zh-hans'
 # LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'ja'
 
 
 TIME_ZONE = 'Asia/Shanghai'
@@ -131,5 +132,41 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 # SIMPLEUI_HOME_PAGE = 'https://www.baidu.com'
 # 首页标题
 # SIMPLEUI_HOME_TITLE = '百度一下你就知道'
-# 首页图标,支持element-ui的图片和fontawesome的图标
+# 首页图标,支持element-ui的图标和fontawesome的图标
 # SIMPLEUI_HOME_ICON = 'el-icon-date'
+
+# 自定义SIMPLEUI的Logo
+# SIMPLEUI_LOGO = 'https://avatars2.githubusercontent.com/u/13655483?s=60&v=4'
+
+# 让simpleui 不要收集相关信息
+SIMPLEUI_ANALYSIS = True
+
+# 自定义simpleui 菜单
+# SIMPLEUI_CONFIG = {
+#     'menus': [{
+#         'name': 'Simpleui',
+#         'icon': 'fas fa-code',
+#         'url': 'https://gitee.com/tompeppa/simpleui'
+#     }, {
+#         'app': 'auth',
+#         'name': '权限认证',
+#         'icon': 'fas fa-user-shield',
+#         'models': [{
+#             'name': '用户',
+#             'icon': 'fa fa-user',
+#             'url': 'auth/user/'
+#         }]
+#     }, {
+#         'name': '测试',
+#         'icon': 'fa fa-file',
+#         'models': [{
+#             'name': 'Baidu',
+#             'url': 'http://baidu.com',
+#             'icon': 'far fa-surprise'
+#         }, {
+#             'name': '内网穿透',
+#             'url': 'https://www.wezoz.com',
+#             'icon': 'fab fa-github'
+#         }]
+#     }]
+# }
