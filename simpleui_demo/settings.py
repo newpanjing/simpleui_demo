@@ -135,14 +135,26 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 # 首页图标,支持element-ui的图标和fontawesome的图标
 # SIMPLEUI_HOME_ICON = 'el-icon-date'
 
+# 首页显示服务器、python、django、simpleui相关信息
+# SIMPLEUI_HOME_INFO = False
+
+# 首页显示快速操作
+# SIMPLEUI_HOME_QUICK = False
+
+# 首页显示最近动作
+# SIMPLEUI_HOME_ACTION = False
+
 # 自定义SIMPLEUI的Logo
 # SIMPLEUI_LOGO = 'https://avatars2.githubusercontent.com/u/13655483?s=60&v=4'
+
 
 # 让simpleui 不要收集相关信息
 SIMPLEUI_ANALYSIS = True
 
 # 自定义simpleui 菜单
 # SIMPLEUI_CONFIG = {
+#     # 在自定义菜单的基础上保留系统模块
+#      'system_keep': False,
 #     'menus': [{
 #         'name': 'Simpleui',
 #         'icon': 'fas fa-code',
