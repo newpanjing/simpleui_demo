@@ -185,7 +185,7 @@ SIMPLEUI_ANALYSIS = True
 # }
 
 # 是否显示默认图标，默认=True
-SIMPLEUI_DEFAULT_ICON = False
+# SIMPLEUI_DEFAULT_ICON = False
 
 # 图标设置，图标参考：
 SIMPLEUI_ICON = {
