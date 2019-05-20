@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.urls import reverse
+
 from .models import *
 
 
@@ -15,6 +17,19 @@ class DepartmentAdmin(admin.ModelAdmin):
     list_per_page = 10
 
     actions_on_top = True
+
+
+@admin.register(Title)
+class TitleAdmin(admin.ModelAdmin):
+    # 要显示的字段
+    list_display = ('id', 'name')
+
+    # 需要搜索的字段
+    search_fields = ('name',)
+
+    # 分页显示，一页的数量
+    list_per_page = 10
+
 
 
 @admin.register(Employe)

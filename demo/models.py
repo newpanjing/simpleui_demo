@@ -1,7 +1,8 @@
 from django.db import models
 
-
 # Create your models here.
+from django.urls import reverse
+
 
 class Department(models.Model):
     name = models.CharField(max_length=128, verbose_name='部门名', help_text='一个部门的名字应该唯一', unique=True, db_index=True)
@@ -10,6 +11,20 @@ class Department(models.Model):
     class Meta:
         verbose_name = "部门"
         verbose_name_plural = "部门管理"
+
+    def __str__(self):
+        return self.name
+
+
+class Title(models.Model):
+    name = models.CharField(max_length=128, verbose_name='职务', null=True, blank=True)
+
+    class Meta:
+        verbose_name = '职务'
+        verbose_name_plural = '职务管理'
+
+    def get_absolute_url(self):
+        return reverse('title-detail-view', args=(self.name,))
 
     def __str__(self):
         return self.name
@@ -35,6 +50,9 @@ class Employe(models.Model):
 
     department = models.ForeignKey(Department, on_delete=models.SET_NULL, blank=False, null=True, verbose_name='部门',
                                    db_index=True)
+
+    title = models.ForeignKey(Title, on_delete=models.SET_NULL, blank=False, null=True, verbose_name='职务',
+                              db_index=True)
 
     enable = models.BooleanField(verbose_name='状态', default=True)
     create_time = models.DateTimeField(verbose_name='创建时间', auto_now=True)

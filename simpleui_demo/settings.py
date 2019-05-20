@@ -29,8 +29,8 @@ ALLOWED_HOSTS = ['*', ]
 # Application definition
 
 INSTALLED_APPS = [
-    'import_export',
     'simpleui',
+    'import_export',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -153,36 +153,36 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 SIMPLEUI_ANALYSIS = True
 
 # 自定义simpleui 菜单
-# SIMPLEUI_CONFIG = {
-#     # 在自定义菜单的基础上保留系统模块
-#     'system_keep': False,
-#     'menus': [{
-#         'name': 'Simpleui',
-#         'icon': 'fas fa-code',
-#         'url': 'https://gitee.com/tompeppa/simpleui'
-#     }, {
-#         'app': 'auth',
-#         'name': '权限认证',
-#         'icon': 'fas fa-user-shield',
-#         'models': [{
-#             'name': '用户',
-#             'icon': 'fa fa-user',
-#             'url': 'auth/user/'
-#         }]
-#     }, {
-#         'name': '测试',
-#         'icon': 'fa fa-file',
-#         'models': [{
-#             'name': 'Baidu',
-#             'url': 'http://baidu.com',
-#             'icon': 'far fa-surprise'
-#         }, {
-#             'name': '内网穿透',
-#             'url': 'https://www.wezoz.com',
-#             'icon': 'fab fa-github'
-#         }]
-#     }]
-# }
+SIMPLEUI_CONFIG = {
+    # 在自定义菜单的基础上保留系统模块
+    'system_keep': True,
+    'menus': [{
+        'name': 'Simpleui',
+        'icon': 'fas fa-code',
+        'url': 'https://gitee.com/tompeppa/simpleui'
+    }, {
+        'app': 'auth',
+        'name': '权限认证',
+        'icon': 'fas fa-user-shield',
+        'models': [{
+            'name': '用户',
+            'icon': 'fa fa-user',
+            'url': 'auth/user/'
+        }]
+    }, {
+        'name': '测试',
+        'icon': 'fa fa-file',
+        'models': [{
+            'name': 'Baidu',
+            'url': 'http://baidu.com',
+            'icon': 'far fa-surprise'
+        }, {
+            'name': '内网穿透',
+            'url': 'https://www.wezoz.com',
+            'icon': 'fab fa-github'
+        }]
+    }]
+}
 
 # 是否显示默认图标，默认=True
 # SIMPLEUI_DEFAULT_ICON = False
