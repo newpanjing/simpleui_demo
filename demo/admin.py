@@ -19,6 +19,10 @@ class DepartmentAdmin(admin.ModelAdmin):
     actions_on_top = True
 
 
+class ImageInline(admin.TabularInline):
+    model = Image
+
+
 @admin.register(Title)
 class TitleAdmin(admin.ModelAdmin):
     # 要显示的字段
@@ -29,7 +33,9 @@ class TitleAdmin(admin.ModelAdmin):
 
     # 分页显示，一页的数量
     list_per_page = 10
-
+    inlines = [
+        ImageInline,
+    ]
 
 
 @admin.register(Employe)
@@ -37,7 +43,7 @@ class EmployeAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'gender', 'idCard', 'phone', 'birthday', 'department', 'enable', 'create_time')
     search_fields = ('name', 'enable')
     list_per_page = 10
-
+    raw_id_fields = ('department', 'title')
     list_filter = ('department', 'create_time', 'birthday', 'time', 'enable', 'gender')
 
     list_display_links = ('name', 'idCard')

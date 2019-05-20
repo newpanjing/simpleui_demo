@@ -30,6 +30,18 @@ class Title(models.Model):
         return self.name
 
 
+class Image(models.Model):
+    image = models.ImageField(verbose_name='图片')
+    title = models.ForeignKey(Title, on_delete=models.SET_NULL, blank=False, null=True, )
+
+    class Meta:
+        verbose_name = '图片'
+        verbose_name_plural = '图片管理'
+
+    def __str__(self):
+        return self.image.path
+
+
 class Employe(models.Model):
     name = models.CharField(max_length=128, verbose_name='名称', help_text='员工的名字', null=False, blank=False,
                             db_index=True)
