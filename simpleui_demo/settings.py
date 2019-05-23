@@ -136,6 +136,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 # 首页图标,支持element-ui的图标和fontawesome的图标
 # SIMPLEUI_HOME_ICON = 'el-icon-date'
 
+# 设置simpleui 点击首页图标跳转的地址
+SIMPLEUI_INDEX = 'https://www.88cto.com'
+
 # 首页显示服务器、python、django、simpleui相关信息
 # SIMPLEUI_HOME_INFO = False
 
