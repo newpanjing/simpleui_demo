@@ -151,6 +151,8 @@ SIMPLEUI_INDEX = 'https://www.88cto.com'
 # 自定义SIMPLEUI的Logo
 # SIMPLEUI_LOGO = 'https://avatars2.githubusercontent.com/u/13655483?s=60&v=4'
 
+# 登录页粒子动画，默认开启，False关闭
+# SIMPLEUI_LOGIN_PARTICLES = False
 
 # 让simpleui 不要收集相关信息
 SIMPLEUI_ANALYSIS = True
