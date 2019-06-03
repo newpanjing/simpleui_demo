@@ -70,20 +70,34 @@ class AgeListFilter(admin.SimpleListFilter):
 
 @admin.register(Employe)
 class EmployeAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'gender', 'idCard', 'phone', 'birthday', 'department', 'enable', 'create_time')
-    search_fields = ('name', 'enable')
+    list_display = ('id', 'name', 'gender', 'phone', 'birthday', 'department', 'enable', 'create_time')
+    search_fields = ('name', 'enable', 'idCard', 'department')
     list_per_page = 10
     raw_id_fields = ('department', 'title')
     list_filter = ('department', AgeListFilter)
     # list_filter = (AgeListFilter, 'department', 'create_time', 'birthday', 'time', 'enable', 'gender')
 
-    list_display_links = ('name', 'idCard')
+    list_display_links = ('name',)
 
     list_editable = ('department', 'phone', 'birthday', 'enable', 'gender')
 
     date_hierarchy = 'create_time'
     # 增加自定义按钮
-    actions = ['make_copy']
+    actions = ['make_copy', 'custom_button']
+
+    def custom_button(self, request, queryset):
+        pass
+
+    # 显示的文本，与django admin一致
+    custom_button.short_description = '测试按钮'
+    # icon，参考element-ui icon与https://fontawesome.com
+    custom_button.icon = 'fas fa-audio-description'
+
+    # 指定element-ui的按钮类型，参考https://element.eleme.cn/#/zh-CN/component/button
+    custom_button.type = 'danger'
+
+    # 给按钮追加自定义的颜色
+    custom_button.style = 'color:black;'
 
     def make_copy(self, request, queryset):
         ids = request.POST.getlist('_selected_action')
