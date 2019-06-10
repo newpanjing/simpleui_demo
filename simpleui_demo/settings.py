@@ -197,3 +197,8 @@ SIMPLEUI_ICON = {
     '系统管理': 'fab fa-apple',
     '员工管理': 'fas fa-user-tie'
 }
+
+# 指定simpleui 是否以脱机模式加载静态资源，为True的时候将默认从本地读取所有资源，即使没有联网一样可以。适合内网项目
+# 不填该项或者为False的时候，默认从第三方的cdn获取
+
+# SIMPLEUI_STATIC_OFFLINE = True
