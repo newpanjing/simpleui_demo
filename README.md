@@ -17,12 +17,12 @@ git clone https://github.com/newpanjing/simpleui_demo
 安装依赖包
 
 ```shell
-    pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ## 第三步
 ```shell
-    python manage.py runserver 8000 
+python manage.py runserver 8000 
 ```
 
 ## 第四步
