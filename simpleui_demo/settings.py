@@ -185,6 +185,9 @@ SIMPLEUI_CONFIG = {
             'name': '内网穿透',
             'url': 'https://www.wezoz.com',
             'icon': 'fab fa-github'
+        }, {
+            'name': '登录页嵌套测试',
+            'url': '/login'
         }]
     }]
 }

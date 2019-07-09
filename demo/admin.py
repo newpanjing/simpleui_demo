@@ -71,8 +71,9 @@ class AgeListFilter(admin.SimpleListFilter):
 @admin.register(Employe)
 class EmployeAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'gender', 'phone', 'birthday', 'department', 'enable', 'create_time')
-    search_fields = ('name', 'enable', 'idCard', 'department')
-    list_per_page = 10
+    # search_fields = ('name', 'enable', 'idCard', 'department')
+    search_fields = ('name', 'department__name')
+    list_per_page = 20
     raw_id_fields = ('department', 'title')
     list_filter = ('department', AgeListFilter)
     # list_filter = (AgeListFilter, 'department', 'create_time', 'birthday', 'time', 'enable', 'gender')
