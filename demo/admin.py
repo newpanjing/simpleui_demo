@@ -1,9 +1,12 @@
 import datetime
 
 from django.contrib import admin
+from django.db import transaction
 from django.urls import reverse
 
 from .models import *
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin, ImportExportActionModelAdmin
 
 
 # Register your models here.
@@ -19,6 +22,7 @@ class DepartmentAdmin(admin.ModelAdmin):
     list_per_page = 10
 
     actions_on_top = True
+
 
 
 class ImageInline(admin.TabularInline):
@@ -68,14 +72,19 @@ class AgeListFilter(admin.SimpleListFilter):
             return queryset.filter(birthday__gte=day)
 
 
+class ProxyResource(resources.ModelResource):
+    class Meta:
+        model = Employe
+
 @admin.register(Employe)
-class EmployeAdmin(admin.ModelAdmin):
+class EmployeAdmin(ImportExportActionModelAdmin):
+    resource_class = ProxyResource
     list_display = ('id', 'name', 'gender', 'phone', 'birthday', 'department', 'enable', 'create_time')
     # search_fields = ('name', 'enable', 'idCard', 'department')
     search_fields = ('name', 'department__name')
     list_per_page = 20
     raw_id_fields = ('department', 'title')
-    list_filter = ('department', AgeListFilter)
+    list_filter = ('department', AgeListFilter, 'create_time')
     # list_filter = (AgeListFilter, 'department', 'create_time', 'birthday', 'time', 'enable', 'gender')
 
     list_display_links = ('name',)
@@ -83,8 +92,18 @@ class EmployeAdmin(admin.ModelAdmin):
     list_editable = ('department', 'phone', 'birthday', 'enable', 'gender')
 
     date_hierarchy = 'create_time'
+
+    fieldsets = [(None, {'fields': ['name', 'gender','phone']}),
+                 (u'其他信息', {
+                     'classes': ('123',),
+                     'fields': ['birthday', 'department', 'enable']})]
+
+
+    @transaction.atomic
+    def test(self, request, queryset):
+        pass
     # 增加自定义按钮
-    actions = ['make_copy', 'custom_button']
+    actions = [test, 'make_copy', 'custom_button']
 
     def custom_button(self, request, queryset):
         pass
