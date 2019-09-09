@@ -24,7 +24,6 @@ class DepartmentAdmin(admin.ModelAdmin):
     actions_on_top = True
 
 
-
 class ImageInline(admin.TabularInline):
     model = Image
 
@@ -76,6 +75,7 @@ class ProxyResource(resources.ModelResource):
     class Meta:
         model = Employe
 
+
 @admin.register(Employe)
 class EmployeAdmin(ImportExportActionModelAdmin):
     resource_class = ProxyResource
@@ -93,15 +93,15 @@ class EmployeAdmin(ImportExportActionModelAdmin):
 
     date_hierarchy = 'create_time'
 
-    fieldsets = [(None, {'fields': ['name', 'gender','phone']}),
+    fieldsets = [(None, {'fields': ['name', 'gender', 'phone']}),
                  (u'其他信息', {
                      'classes': ('123',),
                      'fields': ['birthday', 'department', 'enable']})]
 
-
     @transaction.atomic
     def test(self, request, queryset):
         pass
+
     # 增加自定义按钮
     actions = [test, 'make_copy', 'custom_button']
 
@@ -118,6 +118,14 @@ class EmployeAdmin(ImportExportActionModelAdmin):
 
     # 给按钮追加自定义的颜色
     custom_button.style = 'color:black;'
+
+    # 链接按钮，设置之后直接访问该链接
+    # 3中打开方式
+    # action_type 0=当前页内打开，1=新tab打开，2=浏览器tab打开
+    # 设置了action_type，不设置url，页面内将报错
+
+    custom_button.action_type = 1
+    custom_button.action_url = 'https://www.baidu.com'
 
     def make_copy(self, request, queryset):
         ids = request.POST.getlist('_selected_action')
