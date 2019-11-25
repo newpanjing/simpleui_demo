@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # 注册自己的app
     'demo',
     'finance',
+    'django.contrib.admindocs'
 ]
 
 MIDDLEWARE = [

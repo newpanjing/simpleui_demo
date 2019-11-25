@@ -1,6 +1,6 @@
 import datetime
 
-from django.contrib import admin
+from django.contrib import admin, messages
 from django.db import transaction
 from django.urls import reverse
 
@@ -100,7 +100,11 @@ class EmployeAdmin(ImportExportActionModelAdmin):
 
     @transaction.atomic
     def test(self, request, queryset):
+        messages.add_message(request, messages.SUCCESS, '啥也没有~')
         pass
+
+    # 自 3.4+ 支持confirm确认提示
+    test.confirm = '您确定要点击测试按钮吗？'
 
     # 增加自定义按钮
     actions = [test, 'make_copy', 'custom_button']
@@ -139,5 +143,7 @@ class EmployeAdmin(ImportExportActionModelAdmin):
                 birthday=employe.birthday,
                 department_id=employe.department_id
             )
+
+        messages.add_message(request, messages.SUCCESS, '复制成功，复制了{}个员工。'.format(len(ids)))
 
     make_copy.short_description = '复制员工'

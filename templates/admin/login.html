@@ -12,9 +12,30 @@
 
 {% block header %}
     <div class="header">{{ site_header }}</div>
-    <div>
-        <div>欢迎使用simpleui demo</div>
+     <el-alert
+        title="成功提示的文案"
+        type="success"
+        :show-icon="false">
+        <div slot="title">
+            <div>欢迎使用simpleui demo</div>
         <div>账号：simpleui，密码：demo123456</div>
-        <div>源码地址：<a href="https://github.com/newpanjing/simpleui_demo" target="_blank">https://github.com/newpanjing/simpleui_demo</a></div>
-    </div>
+        <div>源码地址：
+             <el-link type="primary" @click="window.open('https://github.com/newpanjing/simpleui_demo')">https://github.com/newpanjing/simpleui_demo</el-link>
+        </div>
+        </div>
+      </el-alert>
+{% endblock %}
+
+
+{% block particles %}
+    {{ block.super }}
+    <!-- 重写login页面的block 添加自己的脚本 -->
+    <script type="text/javascript">
+        window.addEventListener('load', function () {
+            if(loginApp){
+                loginApp.username = 'simpleui';
+                loginApp.password = 'demo123456';
+            }
+        });
+    </script>
 {% endblock %}
