@@ -3,3 +3,6 @@ django-import-export
 django-simpleui
 Pillow
 docutils
+django-mdeditor
+markdown
+Pygments
