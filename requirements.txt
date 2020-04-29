@@ -1,4 +1,4 @@
-Django==2.2
+Django==2.2.10
 django-import-export==1.2.0
 django-simpleui
 Pillow
