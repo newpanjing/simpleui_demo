@@ -1,5 +1,5 @@
-Django==2.2.10
-django-import-export==1.2.0
+Django
+django-import-export
 django-simpleui
 Pillow
 docutils
