@@ -20,3 +20,9 @@ class Record(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Layer(Record):
+    class Meta:
+        verbose_name = "按钮弹出对话框"
+        verbose_name_plural = "按钮弹出对话框"
