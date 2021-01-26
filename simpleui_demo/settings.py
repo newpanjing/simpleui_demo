@@ -169,6 +169,38 @@ SIMPLEUI_CONFIG = {
         'icon': 'fas fa-code',
         'url': 'https://gitee.com/tompeppa/simpleui'
     }, {
+        # 自2021.02.01+ 支持多级菜单，models 为子菜单名
+        'name': '多级菜单测试',
+        'icon': 'fa fa-file',
+        'models': [{
+            'name': 'Baidu',
+            'icon': 'far fa-surprise',
+            'models': [
+                {
+                    'name': '爱奇艺',
+                    # 第四级就不支持了，element只支持了3级
+                    'models': [
+                        {'name': '视频直播'}
+                    ]
+                }, {
+                    'name': '百度问答'
+                }
+            ]
+        }, {
+            'name': 'Google',
+            'icon': 'far fa-surprise',
+            'models': [{
+                'name': 'Youtube',
+                'icon': 'far fa-surprise'
+            }, {
+                'name': 'Gmail',
+                'icon': 'far fa-surprise'
+            }, {
+                'name': 'Search',
+                'url': 'https://www.google.com'
+            }]
+        }]
+    }, {
         'app': 'auth',
         'name': '权限认证',
         'icon': 'fas fa-user-shield',
@@ -211,10 +243,9 @@ SIMPLEUI_ICON = {
 # 指定simpleui 是否以脱机模式加载静态资源，为True的时候将默认从本地读取所有资源，即使没有联网一样可以。适合内网项目
 # 不填该项或者为False的时候，默认从第三方的cdn获取
 
-SIMPLEUI_STATIC_OFFLINE = False
+SIMPLEUI_STATIC_OFFLINE = True
 
 # 设置上传目录
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # 设置前缀
 MEDIA_URL = '/media/'
-
