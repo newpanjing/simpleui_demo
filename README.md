@@ -11,6 +11,20 @@ simpleui demo,默认使用sqlite数据库。
 
 simpleui 是一个django admin的ui框架，与代码无关。
 
+# Docker
+
+demo制作了官方的镜像，可以直接拉取使用
+
+```shell
+docker pull newpanjing/simpleui_demo
+
+docker run -p 8080:8080 newpanjing/simpleui_demo
+```
+
+启动成功后访问：http://127.0.0.1:8080
+
+
+
 # 自动安装
 Linux或者macOS可以直接运行`bootstrap.sh`脚本，自动配置虚拟环境、安装依赖包、启动运行
 ```shell
