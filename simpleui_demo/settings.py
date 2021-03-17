@@ -169,7 +169,7 @@ SIMPLEUI_CONFIG = {
         'icon': 'fas fa-code',
         'url': 'https://gitee.com/tompeppa/simpleui'
     }, {
-        # 自2021.02.01+ 支持多级菜单，models 为子菜单名
+        # 自2021.02.01+ 支持多级菜单，models 为子菜单名，理论上可以无限级
         'name': '多级菜单测试',
         'icon': 'fa fa-file',
         'models': [{
@@ -178,9 +178,14 @@ SIMPLEUI_CONFIG = {
             'models': [
                 {
                     'name': '爱奇艺',
-                    # 第四级就不支持了，element只支持了3级
                     'models': [
-                        {'name': '视频直播'}
+                        {'name': '视频直播'},
+
+                        {'name': 'TV直播',
+                         'models': [
+                             {'name': '视频直播'}
+                         ]},
+
                     ]
                 }, {
                     'name': '百度问答'
@@ -224,9 +229,6 @@ SIMPLEUI_CONFIG = {
             'name': '内网穿透',
             'url': 'https://www.wezoz.com',
             'icon': 'fab fa-github'
-        }, {
-            'name': '登录页嵌套测试',
-            'url': '/login'
         }]
     }]
 }
