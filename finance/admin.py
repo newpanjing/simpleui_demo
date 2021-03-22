@@ -86,7 +86,7 @@ class RecordAdmin(ImportExportActionModelAdmin, AjaxAdmin):
     list_display = ('id', 'name', 'type', 'money', 'create_date')
     list_per_page = 10
 
-    actions = ('layer_input',)
+    actions = ('layer_input', 'upload_file')
 
     def layer_input(self, request, queryset):
         # 这里的queryset 会有数据过滤，只包含选中的数据
@@ -222,3 +222,24 @@ class RecordAdmin(ImportExportActionModelAdmin, AjaxAdmin):
         }]
     }
 
+    def upload_file(self, request, queryset):
+        # 这里的upload 就是和params中配置的key一样
+        upload = request.FILES['upload']
+        print(upload)
+        return JsonResponse(data={
+            'status': 'success',
+            'msg': '处理成功！'
+        })
+
+    upload_file.short_description = '文件上传对话框'
+    upload_file.type = 'success'
+    upload_file.icon = 'el-icon-upload'
+    upload_file.enable = True
+
+    upload_file.layer = {
+        'params': [{
+            'type': 'file',
+            'key': 'upload',
+            'label': '文件'
+        }]
+    }
