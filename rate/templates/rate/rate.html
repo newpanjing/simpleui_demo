@@ -1,0 +1,28 @@
+<div id="v_id_{{ name }}">
+    <input type="hidden" name="{{ name }}" v-model="{{ name }}">
+
+    <el-rate
+            v-model="{{ name }}"
+            {% if allow_half %}
+            :allow-half="true"
+            {% endif %}
+            {% if max_value %}
+            :max="{{ max_value }}"
+            {% endif %}
+            {% if disabled %}
+            :disabled="true"
+            {% endif %}
+            {% if show_score %}
+            show-score
+            score-template="{value}"
+            {% endif %}
+    ></el-rate>
+</div>
+<script type="text/javascript">
+    var app_{{ name }} = new Vue({
+        el: '#v_id_{{ name }}',
+        data: {
+            '{{ name }}': {{ value|default:0 }}
+        }
+    });
+</script>

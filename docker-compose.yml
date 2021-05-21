@@ -1,0 +1,8 @@
+version: '3'
+services:
+    simpleui_demo_docker:
+      build: .
+      container_name: simpleui_demo_docker
+      restart: always
+      ports:
+        - 8000:8000

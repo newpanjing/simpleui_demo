@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'demo',
     'finance',
     'django.contrib.admindocs',
-    'mdeditor'
+    'mdeditor',
+    'rate'
 ]
 
 MIDDLEWARE = [
@@ -251,3 +252,9 @@ SIMPLEUI_STATIC_OFFLINE = True
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # 设置前缀
 MEDIA_URL = '/media/'
+
+# 默认主题 设置
+SIMPLEUI_DEFAULT_THEME = 'x-blue.css'
+
+# django 3.2要配置
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

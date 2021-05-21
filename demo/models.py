@@ -3,6 +3,8 @@ from django.db import models
 # Create your models here.
 from django.urls import reverse
 
+from rate import fields
+
 
 class Department(models.Model):
     name = models.CharField(max_length=128, verbose_name='部门名', help_text='一个部门的名字应该唯一', unique=True, db_index=True)
@@ -14,6 +16,20 @@ class Department(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class RateModel(models.Model):
+    f1 = fields.RateField(verbose_name='评分1', max_value=5)
+
+    # 指定最大值，和允许选半格
+    f2 = fields.RateField(verbose_name='评分2', max_value=5, allow_half=True, show_score=False)
+
+    # disabled 设为默认读
+    f3 = fields.RateField(verbose_name='评分3', max_value=5, default=3.5, disabled=True)
+
+    class Meta:
+        verbose_name = 'Rate评分'
+        verbose_name_plural = 'Rate评分'
 
 
 class Title(models.Model):

@@ -5,6 +5,7 @@ from django.db import transaction
 from django.http import JsonResponse
 from django.urls import reverse
 
+from simpleui import forms
 from simpleui.admin import AjaxAdmin
 from .models import *
 from import_export import resources
@@ -79,7 +80,7 @@ class ProxyResource(resources.ModelResource):
 
 
 @admin.register(Employe)
-class EmployeAdmin(ImportExportActionModelAdmin,AjaxAdmin):
+class EmployeAdmin(ImportExportActionModelAdmin, AjaxAdmin):
     resource_class = ProxyResource
     list_display = ('id', 'name', 'gender', 'phone', 'birthday', 'department', 'enable', 'create_time')
     # search_fields = ('name', 'enable', 'idCard', 'department')
@@ -100,6 +101,7 @@ class EmployeAdmin(ImportExportActionModelAdmin,AjaxAdmin):
                      'classes': ('123',),
                      'fields': ['birthday', 'department', 'enable']})]
     save_on_top = True
+
     @transaction.atomic
     def test(self, request, queryset):
         messages.add_message(request, messages.SUCCESS, '啥也没有~')
@@ -109,7 +111,7 @@ class EmployeAdmin(ImportExportActionModelAdmin,AjaxAdmin):
     test.confirm = '您确定要点击测试按钮吗？'
 
     # 增加自定义按钮
-    actions = [test, 'make_copy', 'custom_button','layer_input']
+    actions = [test, 'make_copy', 'custom_button', 'layer_input']
 
     def layer_input(self, request, queryset):
         # 这里的queryset 会有数据过滤，只包含选中的数据
@@ -198,3 +200,11 @@ class EmployeAdmin(ImportExportActionModelAdmin,AjaxAdmin):
         messages.add_message(request, messages.SUCCESS, '复制成功，复制了{}个员工。'.format(len(ids)))
 
     make_copy.short_description = '复制员工'
+
+
+@admin.register(RateModel)
+class RateAdmin(admin.ModelAdmin):
+    # form = LoginForm
+    disable_fields = ('f1',)
+
+    pass
