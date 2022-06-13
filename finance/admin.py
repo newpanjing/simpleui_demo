@@ -21,6 +21,8 @@ class RecordAdmin(AjaxAdmin):
     """
     actions = ('layer_input',)
 
+    list_per_page=10
+
     def layer_input(self, request, queryset):
         # 这里的queryset 会有数据过滤，只包含选中的数据
 
